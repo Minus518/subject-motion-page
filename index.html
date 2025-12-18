@@ -40,6 +40,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="static/js/bulma-carousel.min.js"></script>
   <script defer src="static/js/index.js"></script>
+  <script defer src="static/js/animations.js"></script>
 </head>
 <body>
   <!-- Navigation -->
@@ -85,9 +86,6 @@
               <p class="is-size-5">
                 <strong>Anonymous Authors</strong>
               </p>
-              <p class="is-size-6">
-                <em>Under Review • 2024</em>
-              </p>
             </div>
           </div>
         </div>
@@ -124,14 +122,14 @@
   </section>
 
   <!-- Demo Video Section -->
-  <section class="section">
+  <section class="section has-background-light">
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-10">
           <div class="box has-background-light">
-            <h3 class="title is-4 has-text-centered mb-5">Overview Demo</h3>
-            <figure class="image is-16by9">
-              <video id="demo-video" controls muted loop poster="">
+            <h3 class="title is-4 has-text-centered mb-4">Overview Demo</h3>
+            <figure class="image">
+              <video id="demo-video" controls muted loop autoplay playsinline poster="">
                 <source src="static/videos/show.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
@@ -193,7 +191,7 @@
         <div class="column is-6">
           <div class="box">
             <h3 class="title is-5 has-text-centered">Example 1</h3>
-            <video class="result-video" controls muted loop>
+            <video class="result-video" controls muted loop autoplay playsinline>
               <source src="static/videos/dog2_horse.mp4" type="video/mp4">
             </video>
             <p class="has-text-centered mt-2">Dog performing horse-like motions</p>
@@ -203,7 +201,7 @@
         <div class="column is-6">
           <div class="box">
             <h3 class="title is-5 has-text-centered">Example 2</h3>
-            <video class="result-video" controls muted loop>
+            <video class="result-video" controls muted loop autoplay playsinline>
               <source src="static/videos/cat_guitar.mp4" type="video/mp4">
             </video>
             <p class="has-text-centered mt-2">Cat playing guitar</p>
@@ -213,7 +211,7 @@
         <div class="column is-6">
           <div class="box">
             <h3 class="title is-5 has-text-centered">Example 3</h3>
-            <video class="result-video" controls muted loop>
+            <video class="result-video" controls muted loop autoplay playsinline>
               <source src="static/videos/cat_surf.mp4" type="video/mp4">
             </video>
             <p class="has-text-centered mt-2">Cat surfing</p>
@@ -223,7 +221,7 @@
         <div class="column is-6">
           <div class="box">
             <h3 class="title is-5 has-text-centered">Example 4</h3>
-            <video class="result-video" controls muted loop>
+            <video class="result-video" controls muted loop autoplay playsinline>
               <source src="static/videos/stitch.mp4" type="video/mp4">
             </video>
             <p class="has-text-centered mt-2">Character animation</p>
@@ -234,7 +232,7 @@
       <!-- Additional Results -->
       <div class="box has-background-light">
         <h3 class="subtitle is-4 has-text-centered">More Results</h3>
-        <video class="result-video" controls muted loop style="max-width: 600px; margin: 0 auto; display: block;">
+        <video class="result-video" controls muted loop autoplay playsinline style="max-width: 600px; margin: 0 auto; display: block;">
           <source src="static/videos/wolf.mp4" type="video/mp4">
         </video>
         <p class="has-text-centered mt-2">Additional personalization examples</p>
