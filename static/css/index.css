@@ -1,152 +1,287 @@
+/* Custom CSS for Academic Project Page */
+
+/* Color scheme */
+:root {
+  --primary-color: #6a11cb;
+  --primary-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  --secondary-color: #2c3e50;
+  --accent-color: #e74c3c;
+  --text-color: #333;
+  --bg-light: #f8f9fa;
+  --border-color: #e0e0e0;
+}
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+  padding-top: 52px; /* For fixed navbar */
 }
 
-
-.footer .icon-link {
-    font-size: 25px;
-    color: #000;
+/* Navigation */
+.navbar {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-bottom: 1px solid var(--border-color);
 }
 
-.link-block a {
-    margin-top: 5px;
-    margin-bottom: 5px;
+.navbar-brand {
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
-.dnerf {
-  font-variant: small-caps;
+.navbar-item:hover {
+  background-color: transparent !important;
+  color: var(--primary-color) !important;
 }
 
-
-.teaser .hero-body {
-  padding-top: 0;
-  padding-bottom: 3rem;
+/* Hero section */
+.hero.is-primary {
+  background: var(--primary-gradient);
 }
 
-.teaser {
-  font-family: 'Google Sans', sans-serif;
-}
-
-
-.publication-title {
-}
-
-.publication-banner {
-  max-height: parent;
-
-}
-
-.publication-banner video {
-  position: relative;
-  left: auto;
-  top: auto;
-  transform: none;
-  object-fit: fit;
-}
-
-.publication-header .hero-body {
+.hero-body {
+  padding: 3rem 1.5rem;
 }
 
 .publication-title {
-    font-family: 'Google Sans', sans-serif;
+  font-size: 2.5rem !important;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem !important;
 }
 
-.publication-authors {
-    font-family: 'Google Sans', sans-serif;
+.subtitle {
+  font-weight: 300;
+  opacity: 0.9;
 }
 
-.publication-venue {
-    color: #555;
-    width: fit-content;
-    font-weight: bold;
+/* Buttons */
+.button {
+  border-radius: 8px !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
 }
 
-.publication-awards {
-    color: #ff3860;
-    width: fit-content;
-    font-weight: bolder;
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.publication-authors {
+.button.is-dark {
+  background: var(--secondary-color);
 }
 
-.publication-authors a {
-   color: hsl(204, 86%, 53%) !important;
+/* Sections */
+.section {
+  padding: 4rem 1.5rem;
 }
 
-.publication-authors a:hover {
-    text-decoration: underline;
-}
-
-.author-block {
-  display: inline-block;
-}
-
-.publication-banner img {
-}
-
-.publication-authors {
-  /*color: #4286f4;*/
-}
-
-.publication-video {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%;
-
-    overflow: hidden;
-    border-radius: 10px !important;
-}
-
-.publication-video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.publication-body img {
-}
-
-.results-carousel {
+.box {
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* 新增：让轮播整体居中 */
-  /* position: relative;  // 撤销 */
 }
 
-.results-carousel .item {
-  margin: 5px;
-  overflow: hidden;
-  padding: 0;
-  font-size: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* 新增：让每个item居中 */
+.box:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
 
-.results-carousel video {
+/* Video styling */
+video {
   width: 100%;
   height: auto;
-  max-width: 600px;
-  max-height: 70vh;
-  display: block;
-  object-fit: contain;
-  /* 关键：自适应且等比缩放，最大宽高限制 */
-  background: #000;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.slider-pagination .slider-page {
-  background: #000000;
+.result-video {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
 }
 
-.eql-cntrb { 
-  font-size: smaller;
+/* Typography improvements */
+.title {
+  font-weight: 600;
+  letter-spacing: -0.5px;
 }
 
+.is-size-5 {
+  font-size: 1.1rem !important;
+  font-weight: 400;
+}
 
+/* Abstract */
+.content p {
+  margin-bottom: 1.2rem;
+}
+
+/* Method section */
+.image {
+  text-align: center;
+}
+
+/* Grid for results */
+.columns.is-multiline {
+  margin-top: 2rem;
+}
+
+.column > .box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Citation */
+pre {
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+code {
+  background-color: transparent !important;
+  color: var(--text-color);
+}
+
+/* Footer */
+.footer {
+  background: var(--secondary-color);
+  color: white;
+  padding: 2rem 1.5rem;
+}
+
+.footer strong {
+  color: white;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .publication-title {
+    font-size: 1.8rem !important;
+  }
+
+  .subtitle.is-4 {
+    font-size: 1.2rem !important;
+  }
+
+  .field.is-grouped {
+    flex-direction: column;
+  }
+
+  .field.is-grouped .control {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  .button.is-large {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .section {
+    padding: 2rem 1rem;
+  }
+
+  .box {
+    padding: 1.5rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section > .container {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Scroll indicator */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --text-color: #000;
+    --bg-light: #fff;
+    --border-color: #000;
+  }
+
+  .box {
+    border-width: 2px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .navbar,
+  .hero,
+  .footer {
+    display: none !important;
+  }
+
+  body {
+    padding-top: 0 !important;
+  }
+
+  .section {
+    page-break-inside: avoid;
+  }
+}

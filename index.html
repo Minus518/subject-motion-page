@@ -1,264 +1,340 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
-  <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="DESCRIPTION META TAG">
-  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
-  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
-  <meta property="og:url" content="URL OF THE WEBSITE"/>
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Meta tags for social media -->
+  <meta name="description" content="Personalized Text-to-Video under 3D Attention: Subject–Motion Composition via Joint Textual Inversion and LoRA. A novel method for jointly personalizing subject identity and motion within DiTs.">
+  <meta property="og:title" content="Personalized Text-to-Video under 3D Attention"/>
+  <meta property="og:description" content="A novel method for jointly personalizing subject identity and motion within Diffusion Transformers with 3D attention."/>
+  <meta property="og:url" content="https://your-project-page-url.com"/>
+  <meta property="og:image" content="static/images/banner.png" />
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
 
-
-  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
-  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:title" content="Personalized Text-to-Video under 3D Attention">
+  <meta name="twitter:description" content="Joint subject-motion personalization in DiTs with 3D attention using textual inversion and LoRA.">
+  <meta name="twitter:image" content="static/images/banner.png">
   <meta name="twitter:card" content="summary_large_image">
-  <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <meta name="keywords" content="text-to-video, diffusion models, 3D attention, personalization, LoRA, textual inversion">
+  <meta name="author" content="Anonymous Authors">
 
-  <title>Personalized Text-to-Video under 3D Attention: Subject–Motion Composition via Joint Textual Inversion and LoRA</title>
+  <title>Personalized Text-to-Video under 3D Attention</title>
+
+  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="https://huggingface.co/front/assets/huggingface_logo-noborder.svg">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-  rel="stylesheet">
 
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <!-- CSS Framework and Custom Styles -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> -->
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="static/js/bulma-carousel.min.js"></script>
-  <script src="static/js/bulma-slider.min.js"></script>
-  <script src="static/js/index.js"></script>
+  <script defer src="static/js/index.js"></script>
 </head>
 <body>
+  <!-- Navigation -->
+  <nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#top">
+          <strong>Personalized T2V</strong>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
 
+      <div id="navbarMenu" class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item" href="#abstract">Abstract</a>
+          <a class="navbar-item" href="#method">Method</a>
+          <a class="navbar-item" href="#results">Results</a>
+          <a class="navbar-item" href="#dataset">Dataset</a>
+          <a class="navbar-item" href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-  <section class="hero">
+  <!-- Hero Section -->
+  <section id="top" class="hero is-medium is-primary">
     <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Personalized Text-to-Video under 3D Attention: Subject–Motion Composition via Joint Textual Inversion and LoRA</h1>
-            <div class="is-size-5 publication-authors">
-              <!-- Paper authors -->
-              <span class="author-block">
-              </span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Anonymous Authors</a><sup>*</sup>,</span>
-                  <!-- <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-                  </span> -->
-                  </div>
+      <div class="container has-text-centered">
+        <h1 class="title is-2 is-spaced">
+          Personalized Text-to-Video under 3D Attention
+        </h1>
+        <h2 class="subtitle is-4">
+          Subject–Motion Composition via Joint Textual Inversion and LoRA
+        </h2>
 
-                  <!-- <div class="is-size-5 publication-authors">
-                    <span class="author-block">Institution Name<br>Conferance name and year</span>
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div> -->
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- Arxiv PDF link -->
-                      <!-- <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span> -->
-
-                    <!-- Supplementary PDF link -->
-                    <!-- <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span> -->
-
-                  <!-- Github link -->
-                  <span class="link-block">
-                    <a href="https://anonymous.4open.science/r/demo-5180/" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-
-                <!-- ArXiv abstract Link -->
-                <span class="link-block">
-                  <a href="https://huggingface.co/datasets/Minusone/subject_motion" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" style="height:1.2em;vertical-align:middle;">
-                    </span>
-                    <span>Hugging Face</span>
-                  </a>
-                </span>
+        <div class="columns is-centered mt-5">
+          <div class="column is-8">
+            <div class="content">
+              <p class="is-size-5">
+                <strong>Anonymous Authors</strong>
+              </p>
+              <p class="is-size-6">
+                <em>Under Review • 2024</em>
+              </p>
             </div>
+          </div>
+        </div>
+
+        <!-- Project Links -->
+        <div class="field is-grouped is-grouped-centered mt-5">
+          <p class="control">
+            <a class="button is-large is-dark" href="#" target="_blank">
+              <span class="icon">
+                <i class="fas fa-file-pdf"></i>
+              </span>
+              <span>Paper</span>
+            </a>
+          </p>
+          <p class="control">
+            <a class="button is-large is-dark" href="https://anonymous.4open.science/r/demo-5180/" target="_blank">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>Code</span>
+            </a>
+          </p>
+          <p class="control">
+            <a class="button is-large is-dark" href="https://huggingface.co/datasets/Minusone/subject_motion" target="_blank">
+              <span class="icon">
+                <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" style="height: 1.2em; vertical-align: middle;">
+              </span>
+              <span>Dataset</span>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Video Section -->
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-10">
+          <div class="box has-background-light">
+            <h3 class="title is-4 has-text-centered mb-5">Overview Demo</h3>
+            <figure class="image is-16by9">
+              <video id="demo-video" controls muted loop poster="">
+                <source src="static/videos/show.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </figure>
+            <p class="has-text-centered mt-3">
+              <em>Demo showcasing personalized text-to-video generation with subject-motion composition</em>
+            </p>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <!-- Your video here -->
-        <source src="static/videos/show.mp4"
-        type="video/mp4">
-      </video>
-      <!-- <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2> -->
-    </div>
-  </div>
-</section>
-<!-- End teaser video -->
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
+  <!-- Abstract Section -->
+  <section id="abstract" class="section">
+    <div class="container is-max-desktop">
+      <div class="box">
         <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
+        <div class="content is-size-5 has-text-justified">
           <p>
-            Recent Text-to-Video (T2V) diffusion models achieve impressive results, but personalization methods usually target either subject or motion and are limited to U-Net backbones, lacking combined subject-motion customization on DiTs due to their coupled 3D spatiotemporal attention. In this work, we propose a novel method for jointly personalizing subject identity and motion within DiTs with 3D attention. Our method adopts a two-stage pipeline. First, we apply textual inversion to encode both the target subject and the subject from video as learnable tokens. Second, we inject adapter into the transformer and fine-tune it via images and video dynamic switching with the video token. This design leverages images to enhance subject fidelity and video to guide motion learning with appearance guidance from the video token, addressing the challenge of coupled spatiotemporal attention in transformers. To mitigate identity leakage from video frames, we further apply the video token as negative prompt during inference. Extensive experiments show that our method enables effective combination personalization in DiTs with 3D attention, achieving high-quality personalized video generation. We also release our subject-motion dataset to support research on Personalized T2V.
+            Recent Text-to-Video (T2V) diffusion models achieve impressive results, but personalization methods usually target either subject or motion and are limited to U-Net backbones, lacking combined subject-motion customization on DiTs due to their coupled 3D spatiotemporal attention.
+          </p>
+          <p>
+            In this work, we propose a novel method for jointly personalizing subject identity and motion within DiTs with 3D attention. Our method adopts a two-stage pipeline. First, we apply textual inversion to encode both the target subject and the subject from video as learnable tokens. Second, we inject adapter into the transformer and fine-tune it via images and video dynamic switching with the video token.
+          </p>
+          <p>
+            This design leverages images to enhance subject fidelity and video to guide motion learning with appearance guidance from the video token, addressing the challenge of coupled spatiotemporal attention in transformers. To mitigate identity leakage from video frames, we further apply the video token as negative prompt during inference. Extensive experiments show that our method enables effective combination personalization in DiTs with 3D attention, achieving high-quality personalized video generation. We also release our subject-motion dataset to support research on Personalized T2V.
           </p>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- End paper abstract -->
+  </section>
 
-<!-- Method section -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Method</h2>
-        <div class="content has-text-centered">
-          <img src="static/images/method.png" alt="Method Overview" style="max-width:100%; height:auto;"/>
-          <!-- 可在static/images/method.png替换为你的方法图片路径 -->
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End method section -->
-
-
-
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop>
-            <source src="static/videos/dog2_horse.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop>
-            <source src="static/videos/cat_guitar.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop>
-            <source src="static/videos/cat_surf.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video4">
-          <video poster="" id="video4" autoplay controls muted loop>
-            <source src="static/videos/stitch.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video5">
-          <video poster="" id="video5" autoplay controls muted loop>
-            <source src="static/videos/wolf.mp4" type="video/mp4">
-          </video>
-        </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End video carousel -->
-
-
-
-
-
-
-<!-- Paper poster -->
-<!-- <section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section> -->
-<!--End paper poster -->
-
-
-
-
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
+  <!-- Method Section -->
+  <section id="method" class="section has-background-light">
+    <div class="container is-max-desktop">
+      <div class="box">
+        <h2 class="title is-3 has-text-centered">Method Overview</h2>
         <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
+          <figure class="image">
+            <img src="static/images/method.png" alt="Method Overview" style="max-width: 100%; height: auto;">
+          </figure>
+          <div class="has-text-centered mt-4">
+            <p class="is-size-6">
+              <strong>Figure 1:</strong> Overview of our two-stage pipeline for joint subject-motion personalization in DiTs with 3D attention.
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</footer>
+  </section>
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+  <!-- Results Section -->
+  <section id="results" class="section">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered mb-6">Results</h2>
 
-    <!-- End of Statcounter Code -->
+      <div class="columns is-multiline">
+        <div class="column is-6">
+          <div class="box">
+            <h3 class="title is-5 has-text-centered">Example 1</h3>
+            <video class="result-video" controls muted loop>
+              <source src="static/videos/dog2_horse.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered mt-2">Dog performing horse-like motions</p>
+          </div>
+        </div>
 
-  </body>
-  </html>
+        <div class="column is-6">
+          <div class="box">
+            <h3 class="title is-5 has-text-centered">Example 2</h3>
+            <video class="result-video" controls muted loop>
+              <source src="static/videos/cat_guitar.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered mt-2">Cat playing guitar</p>
+          </div>
+        </div>
+
+        <div class="column is-6">
+          <div class="box">
+            <h3 class="title is-5 has-text-centered">Example 3</h3>
+            <video class="result-video" controls muted loop>
+              <source src="static/videos/cat_surf.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered mt-2">Cat surfing</p>
+          </div>
+        </div>
+
+        <div class="column is-6">
+          <div class="box">
+            <h3 class="title is-5 has-text-centered">Example 4</h3>
+            <video class="result-video" controls muted loop>
+              <source src="static/videos/stitch.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered mt-2">Character animation</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Results -->
+      <div class="box has-background-light">
+        <h3 class="subtitle is-4 has-text-centered">More Results</h3>
+        <video class="result-video" controls muted loop style="max-width: 600px; margin: 0 auto; display: block;">
+          <source src="static/videos/wolf.mp4" type="video/mp4">
+        </video>
+        <p class="has-text-centered mt-2">Additional personalization examples</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dataset Section -->
+  <section id="dataset" class="section has-background-light">
+    <div class="container is-max-desktop">
+      <div class="box">
+        <h2 class="title is-3">Subject-Motion Dataset</h2>
+        <div class="content">
+          <p>We have released a subject-motion dataset to support research on Personalized Text-to-Video generation. The dataset includes carefully curated video samples with various subjects and motion patterns.</p>
+          <a class="button is-primary is-medium" href="https://huggingface.co/datasets/Minusone/subject_motion" target="_blank">
+            <span>Access Dataset on Hugging Face</span>
+            <span class="icon">
+              <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" style="height: 1em;">
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Citation Section -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="box">
+        <h2 class="title is-3">Citation</h2>
+        <div class="content">
+          <pre class="has-background-grey-lighter p-4" style="overflow-x: auto;"><code>@article{your2024personalized,
+  title={Personalized Text-to-Video under 3D Attention: Subject–Motion Composition via Joint Textual Inversion and LoRA},
+  author={Anonymous Authors},
+  journal={arXiv preprint arXiv:XXXX.XXXXX},
+  year={2024}
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section has-background-light">
+    <div class="container has-text-centered">
+      <div class="box">
+        <h2 class="title is-3">Contact</h2>
+        <p class="is-size-5">
+          For questions or inquiries about this work, please contact us at:
+        </p>
+        <p class="is-size-5 mt-3">
+          <strong>anonymous@example.com</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Personalized Text-to-Video under 3D Attention</strong> — Research Project 2024
+        </p>
+        <p class="is-size-7">
+          This page was built using modern web technologies for academic project presentation.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Smooth scrolling -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+      if ($navbarBurgers.length > 0) {
+        $navbarBurgers.forEach(el => {
+          el.addEventListener('click', () => {
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
+            el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>
