@@ -31,6 +31,21 @@ document.addEventListener('DOMContentLoaded', function() {
       hero.style.opacity = 1 - (scrolled * 0.002);
     }
 
+    // Scroll-focus scaling effect for boxes:
+    // the box靠近视口中间时会轻微放大，看起来更“聚焦”和炫酷
+    const viewportCenter = window.innerHeight / 2;
+    const maxDistance = window.innerHeight * 0.8; // 视口内 80% 距离内给明显反馈
+    document.querySelectorAll('.box.is-visible').forEach(box => {
+      const rect = box.getBoundingClientRect();
+      const boxCenter = rect.top + rect.height / 2;
+      const distance = Math.abs(boxCenter - viewportCenter);
+      const factor = Math.max(0, 1 - distance / maxDistance); // 视口中心附近为 1，远处趋近 0
+      const scale = 0.96 + factor * 0.12; // 0.96 ~ 1.08 之间，可见但不夸张
+      const shadow = 6 + factor * 12;     // 阴影随聚焦略增强
+      box.style.setProperty('--box-scale', scale.toFixed(3));
+      box.style.setProperty('--box-shadow-strength', shadow.toFixed(1));
+    });
+
     ticking = false;
   }
 
@@ -130,12 +145,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     .box {
       opacity: 0;
-      transform: scale(0.9);
-      transition: all 0.4s ease-out;
+      --box-scale: 0.94;
+      --box-shadow-strength: 8;
+      transform: scale(var(--box-scale));
+      transition: transform 0.35s ease-out, opacity 0.35s ease-out, box-shadow 0.35s ease-out;
+      will-change: transform, box-shadow;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
 
     .box.is-visible {
-      transform: scale(1);
+      opacity: 1;
+      /* 初始进入视口时回到接近正常大小，之后由滚动脚本细调 --box-scale */
+      --box-scale: 0.98;
+    }
+
+    .box.is-visible {
+      box-shadow: 0 var(--box-shadow-strength, 8px) 28px rgba(0,0,0,0.12);
     }
   `;
   document.head.appendChild(style);
