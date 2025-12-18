@@ -106,7 +106,6 @@ video {
   width: 100%;
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .result-video {
@@ -146,6 +145,12 @@ video {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+/* Hover enlargement for key content cards */
+#abstract .box:hover,
+#method .box:hover {
+  --box-scale: 1.10;
 }
 
 /* Citation */
@@ -312,9 +317,9 @@ code {
   animation: slideInRight 1.2s ease-out;
 }
 
-/* Button hover animations */
+/* Button hover animations (kept subtle; main浮动效果由 JS 控制) */
 .button:hover {
-  animation: pulse 0.6s ease-in-out infinite;
+  animation: none;
 }
 
 /* Video animations */
@@ -386,16 +391,23 @@ video:hover {
   left: 0;
   width: 100%;
   height: 100%;
+  pointer-events: none;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
-  animation: shimmer 1.5s ease-out;
+  animation: shimmer 1.5s ease-out forwards;
 }
 
 @keyframes shimmer {
   0% {
     transform: translateX(-100%);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(100%);
+    opacity: 1;
   }
   100% {
-    transform: translateX(100%);
+    transform: translateX(120%);
+    opacity: 0;
   }
 }
 

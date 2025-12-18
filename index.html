@@ -27,19 +27,17 @@
   <link rel="icon" type="image/x-icon" href="https://huggingface.co/front/assets/huggingface_logo-noborder.svg">
 
   <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
   <!-- CSS Framework and Custom Styles -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
   <!-- Scripts -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/index.js"></script>
   <script defer src="static/js/animations.js"></script>
 </head>
 <body>
@@ -129,7 +127,7 @@
           <div class="box has-background-light">
             <h3 class="title is-4 has-text-centered mb-4">Overview Demo</h3>
             <figure class="image">
-              <video id="demo-video" controls muted loop autoplay playsinline poster="">
+              <video id="demo-video" controls muted loop autoplay playsinline preload="auto" poster="">
                 <source src="static/videos/show.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
@@ -147,7 +145,7 @@
   <section id="abstract" class="section">
     <div class="container is-max-desktop">
       <div class="box">
-        <h2 class="title is-3">Abstract</h2>
+        <h2 class="title is-3 has-text-centered">Abstract</h2>
         <div class="content is-size-5 has-text-justified">
           <p>
             Recent Text-to-Video (T2V) diffusion models achieve impressive results, but personalization methods usually target either subject or motion and are limited to U-Net backbones, lacking combined subject-motion customization on DiTs due to their coupled 3D spatiotemporal attention.
@@ -170,7 +168,7 @@
         <h2 class="title is-3 has-text-centered">Method Overview</h2>
         <div class="content">
           <figure class="image">
-            <img src="static/images/method.png" alt="Method Overview" style="max-width: 100%; height: auto;">
+            <img src="static/images/method.png" alt="Method Overview" loading="lazy" style="max-width: 100%; height: auto;">
           </figure>
           <div class="has-text-centered mt-4">
             <p class="is-size-6">
@@ -191,7 +189,7 @@
         <div class="column is-6">
           <div class="box">
             <h3 class="title is-5 has-text-centered">Example 1</h3>
-            <video class="result-video" controls muted loop autoplay playsinline>
+            <video class="result-video" controls muted loop autoplay playsinline preload="metadata">
               <source src="static/videos/dog2_horse.mp4" type="video/mp4">
             </video>
             <p class="has-text-centered mt-2">Dog performing horse-like motions</p>
@@ -201,7 +199,7 @@
         <div class="column is-6">
           <div class="box">
             <h3 class="title is-5 has-text-centered">Example 2</h3>
-            <video class="result-video" controls muted loop autoplay playsinline>
+            <video class="result-video" controls muted loop autoplay playsinline preload="metadata">
               <source src="static/videos/cat_guitar.mp4" type="video/mp4">
             </video>
             <p class="has-text-centered mt-2">Cat playing guitar</p>
@@ -211,7 +209,7 @@
         <div class="column is-6">
           <div class="box">
             <h3 class="title is-5 has-text-centered">Example 3</h3>
-            <video class="result-video" controls muted loop autoplay playsinline>
+            <video class="result-video" controls muted loop autoplay playsinline preload="metadata">
               <source src="static/videos/cat_surf.mp4" type="video/mp4">
             </video>
             <p class="has-text-centered mt-2">Cat surfing</p>
@@ -221,21 +219,22 @@
         <div class="column is-6">
           <div class="box">
             <h3 class="title is-5 has-text-centered">Example 4</h3>
-            <video class="result-video" controls muted loop autoplay playsinline>
+            <video class="result-video" controls muted loop autoplay playsinline preload="metadata">
               <source src="static/videos/stitch.mp4" type="video/mp4">
             </video>
             <p class="has-text-centered mt-2">Character animation</p>
           </div>
         </div>
-      </div>
-
-      <!-- Additional Results -->
-      <div class="box has-background-light">
-        <h3 class="subtitle is-4 has-text-centered">More Results</h3>
-        <video class="result-video" controls muted loop autoplay playsinline style="max-width: 600px; margin: 0 auto; display: block;">
-          <source src="static/videos/wolf.mp4" type="video/mp4">
-        </video>
-        <p class="has-text-centered mt-2">Additional personalization examples</p>
+        <!-- Additional Results as the 5th item in the same group -->
+        <div class="column is-6">
+          <div class="box has-background-light">
+            <h3 class="title is-5 has-text-centered">Example 5</h3>
+            <video class="result-video" controls muted loop autoplay playsinline preload="metadata">
+              <source src="static/videos/wolf.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered mt-2">Additional personalization examples</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -244,11 +243,11 @@
   <section id="dataset" class="section has-background-light">
     <div class="container is-max-desktop">
       <div class="box">
-        <h2 class="title is-3">Subject-Motion Dataset</h2>
-        <div class="content">
+        <h2 class="title is-3 has-text-centered">Subject-Motion Dataset</h2>
+        <div class="content has-text-centered">
           <p>We have released a subject-motion dataset to support research on Personalized Text-to-Video generation. The dataset includes carefully curated video samples with various subjects and motion patterns.</p>
           <a class="button is-primary is-medium" href="https://huggingface.co/datasets/Minusone/subject_motion" target="_blank">
-            <span>Access Dataset on Hugging Face</span>
+            <span>Access Dataset on HuggingFace</span>
             <span class="icon">
               <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" style="height: 1em;">
             </span>
@@ -264,11 +263,11 @@
       <div class="box">
         <h2 class="title is-3">Citation</h2>
         <div class="content">
-          <pre class="has-background-grey-lighter p-4" style="overflow-x: auto;"><code>@article{your2024personalized,
+          <pre class="has-background-grey-lighter p-4" style="overflow-x: auto;"><code>@article{your2025personalized,
   title={Personalized Text-to-Video under 3D Attention: Subject–Motion Composition via Joint Textual Inversion and LoRA},
   author={Anonymous Authors},
   journal={arXiv preprint arXiv:XXXX.XXXXX},
-  year={2024}
+  year={2025}
 }</code></pre>
         </div>
       </div>
@@ -295,7 +294,7 @@
     <div class="container">
       <div class="content has-text-centered">
         <p>
-          <strong>Personalized Text-to-Video under 3D Attention</strong> — Research Project 2024
+          <strong>Personalized Text-to-Video under 3D Attention</strong> — Research Project 2025
         </p>
         <p class="is-size-7">
           This page was built using modern web technologies for academic project presentation.

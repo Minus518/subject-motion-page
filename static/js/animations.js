@@ -34,16 +34,27 @@ document.addEventListener('DOMContentLoaded', function() {
     // Scroll-focus scaling effect for boxes:
     // the box靠近视口中间时会轻微放大，看起来更“聚焦”和炫酷
     const viewportCenter = window.innerHeight / 2;
-    const maxDistance = window.innerHeight * 0.8; // 视口内 80% 距离内给明显反馈
+    const maxDistance = window.innerHeight * 0.6; // 缩短距离，让放大更敏感
     document.querySelectorAll('.box.is-visible').forEach(box => {
       const rect = box.getBoundingClientRect();
       const boxCenter = rect.top + rect.height / 2;
       const distance = Math.abs(boxCenter - viewportCenter);
       const factor = Math.max(0, 1 - distance / maxDistance); // 视口中心附近为 1，远处趋近 0
-      const scale = 0.96 + factor * 0.12; // 0.96 ~ 1.08 之间，可见但不夸张
-      const shadow = 6 + factor * 12;     // 阴影随聚焦略增强
+      let scale = 0.94 + factor * 0.18; // 0.94 ~ 1.12，更夸张
+      const shadow = 6 + factor * 20;     // 阴影随聚焦增强
+      const tilt = (factor * 1.5).toFixed(2); // 轻微旋转角度
+
+      // Hover extra zoom for Abstract & Method cards
+      const inKeySection =
+        box.closest('#abstract') !== null ||
+        box.closest('#method') !== null;
+      if (inKeySection && box.matches(':hover')) {
+        scale *= 1.10; // 悬停时再放大 10%
+      }
+
       box.style.setProperty('--box-scale', scale.toFixed(3));
       box.style.setProperty('--box-shadow-strength', shadow.toFixed(1));
+      box.style.setProperty('--box-tilt', `${tilt}deg`);
     });
 
     ticking = false;
@@ -145,22 +156,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     .box {
       opacity: 0;
-      --box-scale: 0.94;
-      --box-shadow-strength: 8;
-      transform: scale(var(--box-scale));
-      transition: transform 0.35s ease-out, opacity 0.35s ease-out, box-shadow 0.35s ease-out;
+      --box-scale: 0.92;
+      --box-shadow-strength: 10;
+      --box-tilt: 0deg;
+      transform: perspective(1200px) rotateX(calc(var(--box-tilt) * -1)) rotateY(calc(var(--box-tilt) * 1)) scale(var(--box-scale));
+      transition: transform 0.28s ease-out, opacity 0.28s ease-out, box-shadow 0.28s ease-out;
       will-change: transform, box-shadow;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.10);
     }
 
     .box.is-visible {
       opacity: 1;
-      /* 初始进入视口时回到接近正常大小，之后由滚动脚本细调 --box-scale */
-      --box-scale: 0.98;
+      /* 初始进入视口时有轻微缩放，滚动时动态调节 */
+      --box-scale: 0.96;
     }
 
     .box.is-visible {
-      box-shadow: 0 var(--box-shadow-strength, 8px) 28px rgba(0,0,0,0.12);
+      box-shadow: 0 var(--box-shadow-strength, 10px) 32px rgba(0,0,0,0.16);
     }
   `;
   document.head.appendChild(style);
