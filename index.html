@@ -126,12 +126,17 @@
         <div class="column is-10">
           <div class="box has-background-light">
             <h3 class="title is-4 has-text-centered mb-4">Overview Demo</h3>
-            <figure class="image">
+            <figure class="image video-container">
               <video id="demo-video" controls muted loop autoplay playsinline preload="auto" poster="">
                 <source src="static/videos/show.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
             </figure>
+            <div class="video-description" id="video-description">
+              <p class="has-text-centered">
+                <em>将鼠标悬停在视频的不同区域查看描述</em>
+              </p>
+            </div>
             <p class="has-text-centered mt-3">
               <em>Demo showcasing personalized text-to-video generation with subject-motion composition</em>
             </p>
@@ -192,7 +197,7 @@
             <video class="result-video" controls muted loop autoplay playsinline preload="metadata">
               <source src="static/videos/dog2_horse.mp4" type="video/mp4">
             </video>
-            <p class="has-text-centered mt-2">Dog performing horse-like motions</p>
+            <p class="has-text-centered mt-2">A &lt;dog&gt;, is running fast on the beach, with the sea and blue sky in the background. There are also low hills in the distance.</p>
           </div>
         </div>
 
@@ -202,7 +207,7 @@
             <video class="result-video" controls muted loop autoplay playsinline preload="metadata">
               <source src="static/videos/cat_guitar.mp4" type="video/mp4">
             </video>
-            <p class="has-text-centered mt-2">Cat playing guitar</p>
+            <p class="has-text-centered mt-2">a &lt;cat&gt;, playing quitar The setting includes a red wall and a white wall, withwarm lighting that creates a cozy atmosphere. The focus is on the &lt;cat&gt;'s handsand the guitar, highlighting their playing technique. Realistic style.</p>
           </div>
         </div>
 
@@ -212,7 +217,7 @@
             <video class="result-video" controls muted loop autoplay playsinline preload="metadata">
               <source src="static/videos/cat_surf.mp4" type="video/mp4">
             </video>
-            <p class="has-text-centered mt-2">Cat surfing</p>
+            <p class="has-text-centered mt-2">A &lt;cat&gt; is surfing on a surfboard at the beach, balancing on the board andbriefly riding the waves. The water is clear and turquoise. The &lt;cat&gt; is playing1nthe water, bobbing with the waves. The scene is full of fun, peace and tranquility</p>
           </div>
         </div>
 
@@ -222,7 +227,7 @@
             <video class="result-video" controls muted loop autoplay playsinline preload="metadata">
               <source src="static/videos/stitch.mp4" type="video/mp4">
             </video>
-            <p class="has-text-centered mt-2">Character animation</p>
+            <p class="has-text-centered mt-2">a &lt;stitch&gt;, playing quitar The setting includes a red wall and a white wall, withwarm lighting that creates a cozy atmosphere. The focus is on the &lt;stitch&gt;'s handsand the guitar, highlighting their playing technique. Realistic style.</p>
           </div>
         </div>
         <!-- Additional Results as the 5th item in the same group -->
@@ -232,7 +237,7 @@
             <video class="result-video" controls muted loop autoplay playsinline preload="metadata">
               <source src="static/videos/wolf.mp4" type="video/mp4">
             </video>
-            <p class="has-text-centered mt-2">Additional personalization examples</p>
+            <p class="has-text-centered mt-2">a &lt;wolf&gt;, playing quitar The setting includes a red wall and a white wall, withwarm lighting that creates a cozy atmosphere. The focus is on the &lt;wolf&gt;'s handsand the guitar, highlighting their playing technique. Realistic style.</p>
           </div>
         </div>
       </div>
@@ -331,6 +336,96 @@
           });
         });
       }
+
+      // Video hover description functionality
+      const video = document.getElementById('demo-video');
+      const description = document.getElementById('video-description');
+      const videoContainer = video ? video.closest('.video-container') : null;
+      
+      // 四个区域的描述文字
+      const descriptions = {
+        'top-left': 'a <dog>, playing quitar The setting includes a red wall and a white wall, withwarm lighting that creates a cozy atmosphere. The focus is on the <dog>\'s handsand the guitar, highlighting their playing technique. Realistic style.',
+        'top-right': 'A <monster> is surfing on a surfboard at the beach, balancing on the board andbriefly riding the waves. The water is clear and turquoise. The <monster> is playing1nthe water, bobbing with the waves. The scene is full of fun, peace and tranquility',
+        'bottom-left': 'A <pig> is surfing on a surfboard at the beach, balancing on the board andbriefly riding the waves. The water is clear and turquoise. The <pig> is playing1nthe water, bobbing with the waves. The scene is full of fun, peace and tranquility',
+        'bottom-right': 'a <cartoon>, playing quitar The setting includes a red wall and a white wall, withwarm lighting that creates a cozy atmosphere. The focus is on the <cartoon>\'s handsand the guitar, highlighting their playing technique. Realistic style.'
+      };
+
+      if (video && description && videoContainer) {
+        let currentQuadrant = null;
+
+        // 获取视频的位置和尺寸
+        function getVideoBounds() {
+          const rect = video.getBoundingClientRect();
+          return {
+            left: rect.left,
+            top: rect.top,
+            width: rect.width,
+            height: rect.height
+          };
+        }
+
+        // 确定鼠标在哪个象限
+        function getQuadrant(x, y) {
+          const bounds = getVideoBounds();
+          const relativeX = x - bounds.left;
+          const relativeY = y - bounds.top;
+          
+          const centerX = bounds.width / 2;
+          const centerY = bounds.height / 2;
+          
+          if (relativeX < centerX && relativeY < centerY) {
+            return 'top-left';
+          } else if (relativeX >= centerX && relativeY < centerY) {
+            return 'top-right';
+          } else if (relativeX < centerX && relativeY >= centerY) {
+            return 'bottom-left';
+          } else {
+            return 'bottom-right';
+          }
+        }
+
+        // HTML 转义函数
+        function escapeHtml(text) {
+          return text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+
+        // 更新描述文字
+        function updateDescription(quadrant) {
+          if (currentQuadrant === quadrant) return;
+          currentQuadrant = quadrant;
+          const desc = descriptions[quadrant];
+          if (desc) {
+            const escapedDesc = escapeHtml(desc);
+            description.innerHTML = `<p class="has-text-centered"><em>${escapedDesc}</em></p>`;
+            description.style.opacity = '1';
+          }
+        }
+
+        // 鼠标移动事件 - 在视频容器上监听
+        videoContainer.addEventListener('mousemove', (e) => {
+          const bounds = getVideoBounds();
+          const relativeX = e.clientX - bounds.left;
+          const relativeY = e.clientY - bounds.top;
+          
+          // 检查鼠标是否在视频区域内
+          if (relativeX >= 0 && relativeX <= bounds.width && 
+              relativeY >= 0 && relativeY <= bounds.height) {
+            const quadrant = getQuadrant(e.clientX, e.clientY);
+            updateDescription(quadrant);
+          }
+        });
+
+        // 鼠标离开事件
+        videoContainer.addEventListener('mouseleave', () => {
+          currentQuadrant = null;
+          description.style.opacity = '0';
+          setTimeout(() => {
+            description.innerHTML = '<p class="has-text-centered"><em>将鼠标悬停在视频的不同区域查看描述</em></p>';
+            description.style.opacity = '1';
+          }, 300);
+        });
+      }
+
     });
   </script>
 </body>

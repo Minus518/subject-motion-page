@@ -416,6 +416,29 @@ figure.image {
   overflow: hidden;
 }
 
+/* Video container */
+.video-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.video-description {
+  margin-top: 1rem;
+  min-height: 60px;
+  transition: opacity 0.3s ease;
+}
+
+.video-description p {
+  margin: 0;
+  padding: 0.75rem;
+  background-color: rgba(248, 249, 250, 0.9);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+
 /* Scroll indicator */
 .navbar {
   position: fixed;
